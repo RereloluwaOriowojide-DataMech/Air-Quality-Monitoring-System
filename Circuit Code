@@ -1,0 +1,108 @@
+
+#define BLYNK_TEMPLATE_ID "TMPL2ads04l-O"
+#define BLYNK_TEMPLATE_NAME "GAS ALARM SYSTEM"
+#define BLYNK_AUTH_TOKEN "dESbHbN4aHqqIdckW4WIQFNUJcjU6mg-"
+#define BLYNK_PRINT Serial
+
+#include <WiFi.h>
+#include <WiFiClient.h>
+#include <BlynkSimpleEsp32.h>
+#include <HTTPClient.h>
+#include <ArduinoHttpClient.h>
+#include <Wire.h>
+#include <Adafruit_GFX.h>
+#include <Adafruit_SSD1306.h>
+
+// OLED display setup
+#define SCREEN_WIDTH 128 // OLED display width, in pixels
+#define SCREEN_HEIGHT 64 // OLED display height, in pixels
+#define OLED_RESET -1 // Reset pin # (or -1 if sharing Arduino reset pin)
+Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
+
+
+char auth[] = BLYNK_AUTH_TOKEN;
+char ssid[] = "RERELOLUWA"; // Change your Wifi/ Hotspot Name
+char pass[] = "rereloluwa"; // Change your Wifi/ Hotspot Password
+
+BlynkTimer timer;
+
+#define MQ135 34
+
+#define RED 14
+#define WHITE 12
+#define buzzer  13
+int MQ135_Val = 0;
+
+WidgetLED led(V1);
+
+
+
+void setup() //Setup function - only function that is run in deep sleep mode
+{
+  Serial.begin(9600); //Start the serial output at 115,200 baud
+ 
+  pinMode(RED, OUTPUT);
+  pinMode (WHITE, OUTPUT);
+  pinMode(buzzer, OUTPUT);
+
+  display.begin(SSD1306_SWITCHCAPVCC, 0x3C);
+  display.clearDisplay();
+  display.setTextSize(1);
+  display.setTextColor(WHITE);
+  display.setCursor(0, 0);
+  display.println("GAS MONITORING SYSTEM");
+  display.display();
+  
+  Blynk.begin(auth, ssid, pass);//Splash screen delay
+  delay(2000);
+  timer.setInterval(1000L, mySensor);
+}
+
+void loop() //Loop function
+{
+  Blynk.run();
+  timer.run();
+}
+
+void mySensor()
+{
+  MQ135_Val = analogRead(MQ2);
+  for(int x = 0 ; x < 100 ; x++)
+    {
+        MQ135_Val = MQ135_Val + analogRead(MQ2);
+    }
+    MQ135_Val = MQ135_Val/100.0;
+  
+  Blynk.virtualWrite(V0, MQ135_Val);
+    
+  if (M135_Val > 2500)
+  {
+    Blynk.logEvent("high_gas");
+    digitalWrite(RED, HIGH);
+    digitalWrite(WHITE, LOW);
+    digitalWrite(buzzer, HIGH);
+    display.clearDisplay();
+    display.setCursor(0, 0);
+    display.println("GAS IS DETECTED!! TAKE PRECAUTIONARY MEASURES"); 
+    display.display();
+       
+    led.on();
+  }
+
+  else
+  {
+    digitalWrite(RED, LOW);
+    digitalWrite(WHITE, HIGH);
+    digitalWrite(buzzer, LOW);
+    display.print("MQ135 Level: ");
+    display.println(MQ135_Val);
+    display.clearDisplay();
+    display.setCursor(0, 0);
+    display.println("STAY SAFE"); 
+    display.display();
+    led.off();
+  }  
+  Serial.print("MQ135 Level: ");
+  Serial.println(MQ135_Val);
+
+}
