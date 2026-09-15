@@ -1,0 +1,13 @@
+# Air-Quality-Monitoring-System
+
+A system that monitors deviation from a specific atmospheric condition using MQ-135 sensor and knowledge in Industrial Internet of Things and Additive Manufacturing 
+
+COMPONENTS
+ESP32 Microcontroller
+MQ-135 gas sensor
+Lithium 18650 battery
+Green and Red led bulb
+Buzzer
+OLED display
+GSM module
+3D - Printed casing
