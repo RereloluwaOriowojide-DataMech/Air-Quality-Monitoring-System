@@ -1,0 +1,22 @@
+#INTRO AND PURPOSE
+The project is a very important safety device especially in environments where air pollution is to be avoided and toxicity is to be managed and subdued to prevent loss of lives and properties.
+
+#BACKGROUND
+The project rest on the foundations of Mechatronics System Design, Industrial Internet of things(IIoT), and Additive manufacturing.
+Keeping tab on how to incorporate sensors in monitoring/managing systems for their most optimized condition.
+
+#DESCRIPTION
+The system is made up of a ESP32 microcontroller, a buzzer for audio detection, GSM module to send mobile alert, MQ-135 sensor to detect atmospheric imbalance or possible unique concentrations.
+Also, two led bulb green and red is connect to the micro-controller: green ON red OFF in normal state and red ON green OFF in detection state. The system is powered by a 18650 Lithium ion battery and all enclosed in a 3D printed casing.
+
+#POSSIBLE APPLICATIONS
+"YOU CAN CONTROL WHAT YOU EAT, OR DRINK BUT YOU CAN'T CONTROL WHAT YOU BREATHE IN"
+In Africa, there is high dependence on gases as fuel both in the industries, homes and even in vehicles. Over the years, multiple tragic occurences have broke out due to ineffient management of these fuels. For decades, there has been multiple news of loss of lives and properties through undetected gas leakages leading to explosion or air pollution.
+
+Furthermore, major oil and gas companies cannot but do with a device like this to manage their gas storage facilities, monitor gas rigs and to monitor gas transfer and processing to minimizes loss(of lives and valuable assets) to the barest minimum and preventing possible catastrophic accidents and in preventive maintenance.
+With the use of MQ-135 sensor, this system has the capability to detect atmospheric imbalances like Alcohol, Benzene etc. This can enable one to maintain an ordered, not easily polluted conducive atmosphere which is of great importance to highly Sensitive Laboratories, Industries, Warehouses, Hotels, and in Medical applications (e.g for asthmatics).
+                                                                                                                                                                                                                                                                                                                                             
+#INDUSTRY 4.0 APPLICATION
+In industries and controlled atmosphere in residentials and sensitive warehouses, system like this can be incoporated, and even in reducing air pollution and supporting green spaces.
+For extensive use and real life monitoring using dashboards. We will have to connect the system to a gate way, establish a protocol connection to the internet and link the gateway to the internet using connectivities such as WiFi, or Ethernet Cable.
+We choose a protocol program. After that a cloud platforms will have to be picked that will allow us to build dashboard and monitor our systems atmospheric condition in real time.                                                                                                                                                                                                                                                                                                                                              
