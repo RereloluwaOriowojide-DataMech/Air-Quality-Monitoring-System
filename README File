@@ -6,7 +6,7 @@ The project rest on the foundations of Mechatronics System Design, Industrial In
 Keeping tab on how to incorporate sensors in monitoring/managing systems for their most optimized condition.
 
 #DESCRIPTION
-The system is made up of a ESP32 microcontroller, a buzzer for audio detection, GSM module to send mobile alert, MQ-135 sensor to detect atmospheric imbalance or possible unique concentrations.
+The system is made up of a ESP32 microcontroller, a buzzer for audio detection, GSM module to send mobile alert, OLED display, MQ-135 sensor to detect atmospheric imbalance or possible unique concentrations.
 Also, two led bulb green and red is connect to the micro-controller: green ON red OFF in normal state and red ON green OFF in detection state. The system is powered by a 18650 Lithium ion battery and all enclosed in a 3D printed casing.
 
 #POSSIBLE APPLICATIONS
